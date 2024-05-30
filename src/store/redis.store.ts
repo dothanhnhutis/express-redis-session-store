@@ -110,7 +110,6 @@ export class RedisStore1 {
     host: string;
     options: RedisOptions;
   });
-
   constructor(params: ExampleParams) {
     this.prefix = params.prefix;
     if ("path" in params) {
@@ -163,18 +162,9 @@ export class RedisStore1 {
       this.handleTimeoutError();
     });
   }
-
   private handleTimeoutError() {
     connectionTimeout = setTimeout(() => {
       throw new Error("Redis reconnect timed out");
     }, REDIS_CONNECT_TIMEOUT);
   }
 }
-
-// const aa = new RedisStore("er", {
-//   port: 6379, // Redis port
-//   host: "127.0.0.1", // Redis host
-//   username: "default", // needs Redis >= 6
-//   password: "my-top-secret",
-//   db: 0, // Defaul
-// });
